@@ -32,6 +32,7 @@ votedemos_2020_gen <- readRDS(here("data", "GA_votedemos_2020_gen.rds"))
 
 ```{r}
 #create all_gender columns for black and white to combine gender-based ones provided in source
+#The 2 means that you want to round up with two decimal places 
 votedemos_2020_gen <- votedemos_2020_gen %>% 
   mutate(
     black_ALL_registered = black_male_registered + black_female_registered + black_unknown_registered,
@@ -45,6 +46,7 @@ votedemos_2020_gen <- votedemos_2020_gen %>%
 votedemos_2020_gen
 
 ```
+
 Let's use select() to simplify our table
 
 ```{r}
@@ -67,11 +69,9 @@ votedemos_2020_gen
 
 ```
 
-
-
 ## Charts
 
-Let's make some charts
+Here we will look at the counties with the highest percentage of Black voters turning out in the general election
 
 ```{r}
 votedemos_2020_gen %>% 
@@ -92,9 +92,9 @@ votedemos_2020_gen %>%
 
 Fix the axis labels?
 
-
 ```{r}
 votedemos_2020_gen %>% 
+  arrange(desc(white_ALL_pct)) %>% 
   head(15) %>% 
   ggplot(aes(x = reorder(county, white_ALL_pct), y = white_ALL_pct)) + 
   geom_col(color = "black", fill = "blue") +
@@ -110,11 +110,23 @@ votedemos_2020_gen %>%
 
 ```{r}
 
+votedemos_2020_gen %>% 
+  arrange(desc(white_ALL_pct)) %>% 
+  head(20) %>% 
+  ggplot(aes(x = reorder(county, white_ALL_pct), y = white_ALL_pct)) + 
+  geom_col(color = "black", fill = "red") +
+  coord_flip() + 
+  scale_y_continuous(name = "Pct of White Registered Voters Who Voted") +
+  scale_x_discrete(name = "County") +
+  theme_hc() +
+  labs(title = "Voter Turnout in GA", 
+       subtitle = "2020 General Election",
+       caption = "Source: GA Sec State") +
+  theme(axis.text.y = element_text(angle = 360)) 
 
 
 
 ```
-
 
 ```{r}
 
@@ -123,6 +135,12 @@ votedemos_2020_gen %>%
 
 ```
 
+```{r}
+
+
+
+
+```
 
 ```{r}
 
@@ -131,6 +149,12 @@ votedemos_2020_gen %>%
 
 ```
 
+```{r}
+
+
+
+
+```
 
 ```{r}
 
@@ -139,7 +163,6 @@ votedemos_2020_gen %>%
 
 ```
 
-
 ```{r}
 
 
@@ -147,27 +170,9 @@ votedemos_2020_gen %>%
 
 ```
 
-
 ```{r}
 
 
 
 
 ```
-
-
-```{r}
-
-
-
-
-```
-
-
-```{r}
-
-
-
-
-```
-

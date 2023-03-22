@@ -1,0 +1,54 @@
+---
+title: "First Web Rendering"
+author: "Giovanna Lino"
+format:
+  html:
+    self-contained: true 
+    toc: true 
+    toc-location: left 
+---
+
+#self-contained, toc and toc-location creates the table of contents
+
+## My first web page
+
+Hi there! This is my first attempt at making a web page.
+
+1.  **Bananas**
+
+<!-- -->
+
+2.  **Apples**
+3.  
+4.  **Ice Cream**
+
+I am going to add a link to this [story](https://github.com/giovannarlino/smpa_rsession4_webpages_and_visuals_lino) (by clicking on the link icon on top of the page)
+
+| XXX | XXX | XXX |
+|-----|-----|-----|
+|     |     |     |
+|     |     |     |
+|     |     |     |
+
+![](6F98E732-FBB7-4DA1-8AB1-289B5303C982.jpeg)
+
+#For a picture, you have to upload it first in the right column to then add the picture in the panel
+
+## Running Code
+
+## Another Head 
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
